@@ -2,11 +2,11 @@
 COMP 163 - Project 3: Quest Chronicles
 Combat System Module - Completed Implementation
 
-Name: [Your Name Here]
+Name: Jadyn Dewitt-Smith
 
 AI Usage:
 Combat structure, ability logic, and flow-control were developed with
-ChatGPT assistance. All logic was reviewed and integrated by the student.
+ChatGPT assistance. All logic was reviewed and integrated by the me.
 """
 
 import random
