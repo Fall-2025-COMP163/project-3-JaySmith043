@@ -198,8 +198,8 @@ AI assistance (ChatGPT) was used for:
 - README formatting  
 - Ensuring clarity and modularity  
 
-All code was reviewed, understood, tested, and modified by the student.  
-The student can explain every function in the interview.
+All code was reviewed, understood, tested, and modified by me. 
+
 
 ---
 
