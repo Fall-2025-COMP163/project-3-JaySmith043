@@ -1,151 +1,217 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/wnCpjX4n)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=21924439&assignment_repo_type=AssignmentRepo)
-# COMP 163: Project 3 - Quest Chronicles
+# Quest Chronicles  
+### COMP 163 – Project 3  
+### Modular RPG Adventure Game  
+**Author:** Jadyn DeWitt-Smith
+**AI Usage:** Documented below  
 
-**AI Usage: Free Use (with explanation requirement)**
+---
 
-## Overview
+## 📌 Project Overview
+Quest Chronicles is a modular, text-based RPG designed to demonstrate mastery of **Python modules**, **custom exceptions**, and **game state management**.  
+The system includes:
 
-Build a complete modular RPG adventure game demonstrating mastery of **exceptions and modules**.
+- Character classes (Warrior, Mage, Rogue, Cleric)  
+- Inventory and equipment  
+- Quest progression system  
+- Turn-based combat  
+- Random enemy encounters  
+- Save/load system  
+- Shop for buying and selling items  
 
-## Getting Started
+All features follow the constraints of COMP 163: **only concepts up to Modules + Exceptions.**
 
-### Step 1: Accept Assignment
-1. Click the assignment link provided in Blackboard
-2. Accept the assignment - this creates your personal repository
-3. Clone your repository to your local machine:
-```bash
-git clone [your-personal-repo-url]
-cd [repository-name]
-```
+---
 
-### Step 2: Understand the Project Structure
+## 📁 Project Structure
 
-Your repository contains:
-
-```
 quest_chronicles/
-├── main.py                     # Game launcher (COMPLETE THIS)
-├── character_manager.py        # Character creation/management (COMPLETE THIS)
-├── inventory_system.py         # Item and equipment management (COMPLETE THIS)
-├── quest_handler.py            # Quest system (COMPLETE THIS)
-├── combat_system.py            # Battle mechanics (COMPLETE THIS)
-├── game_data.py                # Data loading and validation (COMPLETE THIS)
-├── custom_exceptions.py        # Exception definitions (PROVIDED)
+│
+├── main.py
+├── character_manager.py
+├── inventory_system.py
+├── quest_handler.py
+├── combat_system.py
+├── game_data.py
+├── custom_exceptions.py
+│
 ├── data/
-│   ├── quests.txt             # Quest definitions (PROVIDED)
-│   ├── items.txt              # Item database (PROVIDED)
-│   └── save_games/            # Player save files (created automatically)
-├── tests/
-│   ├── test_module_structure.py       # Module organization tests
-│   ├── test_exception_handling.py     # Exception handling tests
-│   └── test_game_integration.py       # Integration tests
-└── README.md                   # This file
-```
+│ ├── quests.txt
+│ ├── items.txt
+│ └── save_games/
+│
+└── tests/
 
-### Step 3: Development Workflow
+yaml
+Copy code
 
-```bash
-# Work on one module at a time
-# Test your code frequently
+---
 
-# Commit and push to see test results
-git add .
-git commit -m "Implement character_manager module"
-git push origin main
+## 🧩 Module Architecture
 
-# Check GitHub for test results (green checkmarks = passed!, red xs = at least 1 failed test case. Click the checkmark or x and then "Details" to see what test cases passed/failed)
-```
+### **main.py**
+Handles:
+- Main menu  
+- Game loop  
+- Navigation to other modules  
+- Saving after major actions  
 
-## Core Requirements (60 Points)
+### **character_manager.py**
+Handles:
+- Character creation  
+- Save/load  
+- Leveling  
+- Validation  
+- Health + gold management  
 
-### Critical Constraint
-You may **only** use concepts covered through the **Exceptions and Modules** chapters. 
+### **inventory_system.py**
+Handles:
+- Inventory storage  
+- Item usage  
+- Weapon/armor equipping  
+- Stat effects  
+- Shop interactions  
 
-### 🎨 Creativity and Customization
+### **quest_handler.py**
+Handles:
+- Accepting quests  
+- Completing quests  
+- Checking prerequisites  
+- Reward calculation  
+- Quest progress tracking  
 
-This project encourages creativity! Here's what you can customize:
+### **combat_system.py**
+Handles:
+- Enemy creation (goblin, orc, dragon)  
+- Turn-based combat  
+- Special abilities  
+- Escaping  
 
-**✅ FULLY CUSTOMIZABLE:**
-- **Character stats** - Adjust health, strength, magic for balance
-- **Enemy stats** - Make enemies easier or harder
-- **Special abilities** - Design unique abilities for each class
-- **Additional enemies** - Add your own enemy types beyond the required three
-- **Game mechanics** - Add status effects, combos, critical hits, etc.
-- **Quest rewards** - Adjust XP and gold amounts
-- **Item effects** - Create unique items with creative effects
+### **game_data.py**
+Handles:
+- Loading and validating `.txt` data  
+- Creating default files if missing  
 
-**⚠️ REQUIRED (for testing):**
-- **4 Character classes:** Warrior, Mage, Rogue, Cleric (names must match exactly)
-- **3 Enemy types:** "goblin", "orc", "dragon" (must exist, stats flexible)
-- **All module functions** - Must have the specified function signatures
-- **Exception handling** - Must raise appropriate exceptions
+---
 
-**💡 CREATIVITY TIPS:**
-1. Start with required features working
-2. Add creative elements incrementally
-3. Test after each addition
-4. Be ready to explain your design choices in the interview
-5. Bonus interview points for thoughtful, balanced customization!
+## ⚠️ Exception Strategy
 
-**Example Creative Additions:**
-- Vampire enemy that heals when attacking
-- Warrior "Last Stand" ability that activates when health is low
-- Poison status effect that deals damage over time
-- Critical hit system based on character stats
-- Rare "legendary" weapons with special effects
+Quest Chronicles uses structured exceptions for clean error handling.
 
-### Module 1: custom_exceptions.py (PROVIDED - 0 points to implement)
+### Character Exceptions
+- InvalidCharacterClassError  
+- CharacterNotFoundError  
+- InvalidSaveDataError  
+- CharacterDeadError  
 
-**This module is provided complete.** It defines all custom exceptions you'll use throughout the project.
+### Combat Exceptions
+- InvalidTargetError  
+- CombatNotActiveError  
+- AbilityOnCooldownError  
 
-### Module 2: game_data.py (10 points)
+### Quest Exceptions
+- QuestNotFoundError  
+- QuestRequirementsNotMetError  
+- QuestAlreadyCompletedError  
+- QuestNotActiveError  
 
-### Module 3: character_manager.py (15 points)
+### Inventory Exceptions
+- InventoryFullError  
+- ItemNotFoundError  
+- InsufficientResourcesError  
+- InvalidItemTypeError  
 
-### Module 4: inventory_system.py (10 points)
+### Data Exceptions
+- MissingDataFileError  
+- InvalidDataFormatError  
+- CorruptedDataError  
 
-### Module 5: quest_handler.py (10 points)
+This ensures each module reports errors cleanly to `main.py`.
 
-### Module 6: combat_system.py (10 points)
+---
 
-### Module 7: main.py (5 points)
+## 🎮 How to Play
 
-## Automated Testing & Validation (60 Points)
+### Run the Game
+python main.py
 
-## Interview Component (40 Points)
+yaml
+Copy code
 
-**Creativity Bonus** (up to 5 extra points on interview):
-- Added 2+ custom enemy types beyond required three
-- Designed unique and balanced special abilities
-- Implemented creative game mechanics (status effects, advanced combat, etc.)
-- Thoughtful stat balancing with clear reasoning
+### Main Menu Options
+1. New Game  
+2. Load Game  
+3. Exit  
 
-**Note:** Creativity is encouraged, but functionality comes first! A working game with required features scores higher than a broken game with lots of extras.
+### In-Game Menu Options
+1. View Character Stats  
+2. View Inventory  
+3. Quest Menu  
+4. Explore (Fight Enemies)  
+5. Shop  
+6. Save & Quit  
 
-### Update README.md
+---
 
-Document your project with:
+## 🧪 Running Automated Tests
 
-1. **Module Architecture:** Explain your module organization
-2. **Exception Strategy:** Describe when/why you raise specific exceptions
-3. **Design Choices:** Justify major decisions
-4. **AI Usage:** Detail what AI assistance you used
-5. **How to Play:** Instructions for running the game
+Run all tests:
+python -m pytest tests/ -v
 
-### What to Submit:
+sql
+Copy code
 
-1. **GitHub Repository:** Your completed multi-module project
-2. **Interview:** Complete 10-minute explanation session
-3. **README:** Updated documentation
+Run specific tests:
+python -m pytest tests/test_exception_handling.py -v
+python -m pytest tests/test_module_structure.py -v
+python -m pytest tests/test_game_integration.py -v
 
-## Protected Files Warning
+yaml
+Copy code
 
-⚠️ **IMPORTANT: Test Integrity**
+---
 
-Test files are provided for your learning but are protected. Modifying test files constitutes academic dishonesty and will result in:
+## 🎨 Design Choices
 
-- Automatic zero on the project
-- Academic integrity investigation
+### ✔ Characters as Dictionaries  
+Chosen to avoid circular imports across modules and comply with COMP 163’s limitation (no advanced OOP). Dictionaries also serialize easily.
 
-You can view tests to understand requirements, but any modifications will be automatically detected.
+### ✔ Data-Driven Items & Quests  
+Editable through `quests.txt` and `items.txt` without touching code.
+
+### ✔ Strict Module Separation  
+Each module handles exactly one type of functionality, making debugging and testing easier.
+
+### ✔ Clear, Test-Friendly Logic  
+All code uses only loops, branches, simple functions, exceptions, and modules — the concepts allowed in COMP 163.
+
+### ✔ Safe Error Handling  
+Every invalid action produces a meaningful custom exception.
+
+---
+
+## 🤖 AI Usage Disclosure
+AI assistance (ChatGPT) was used for:
+
+- Structuring module interactions  
+- Template logic for combat, inventory, and quest systems  
+- Debugging exception flow  
+- README formatting  
+- Ensuring clarity and modularity  
+
+All code was reviewed, understood, tested, and modified by the student.  
+The student can explain every function in the interview.
+
+---
+
+## 🚀 Future Improvements
+
+- More enemy types (trolls, vampires, ghosts)  
+- Add elemental damage  
+- Critical hit and dodge mechanics  
+- Crafting or refining system  
+- Class skill trees  
+
+---
+
+## 🎉 Thank You for Reviewing Quest Chronicles!
+A modular Python RPG adventure designed to meet COMP 163 requirements.
